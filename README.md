@@ -1,6 +1,8 @@
 # Clojure Emacs Setup
 
-It's basic ~100 lines user friendly setup for Emacs beginners which provides comfortable Clojure development environment.
+It's basic ~100 lines user friendly setup for Emacs beginners which provides comfortable Clojure development environment. 
+
+This is a clone which is basically identical from the original but integrates [Solarized](https://github.com/sellout/emacs-color-theme-solarized) as default theme
 
 ![look](https://dl.dropboxusercontent.com/u/2428018/Screenshots/1b.png)
 
@@ -13,6 +15,7 @@ It's basic ~100 lines user friendly setup for Emacs beginners which provides com
 * Auto Completion
 * Lisp Indentation
 * Textmate mode
+* [Solarized Theme](https://github.com/sellout/emacs-color-theme-solarized) (Default)
 * [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme)
 
 ### Off by deafult
@@ -21,6 +24,7 @@ It's basic ~100 lines user friendly setup for Emacs beginners which provides com
 * Relative line numbers
 * Vim-mode
 * Whitespaces cleaning
+* Tomorrow Theme
 
 ## Installation
 

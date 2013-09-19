@@ -51,23 +51,7 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 
-;; Highlight-parentheses
-(require 'highlight-parentheses)
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
-
-;; Classic Rainbow
-;; (custom-set-variables '(hl-paren-colors (quote ("orange" "yellow" "greenyellow" "green" "springgreen" "cyan" "slateblue" "magenta" "purple"))))
-;; Eighties Rainbow
-;; (custom-set-variables '(hl-paren-colors (quote ("#f2777a" "#f99157" "#ffcc66" "#99cc99" "#009999" "#99cccc" "#cc99cc"))))
-;; Night Rainbow
-;; (custom-set-variables '(hl-paren-colors (quote ("#cc6666" "#de935f" "#f0c674" "#b5bd68" "#8abeb7" "#81a2be" "#b294bb"))))
-;; Bright Rainbow
-
-
-(add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 ;; Nrepl
 (setenv "PATH" (concat (getenv "HOME") "/bin:" (getenv "PATH")))
@@ -101,7 +85,7 @@
      (color-theme-solarized-light)
      ))
 
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 130 :font "Monaco")
 (set-cursor-color 'white)
 
 (setq-default indent-tabs-mode nil)

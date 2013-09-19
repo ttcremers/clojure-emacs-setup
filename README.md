@@ -10,7 +10,7 @@ This is a clone which is basically identical from the original but integrates [S
 
 * Clojure mode
 * Paredit
-* Parentheses Highlighting
+* Parentheses Highlighting (with RainbowDelimiters)
 * NREPL
 * Auto Completion
 * Lisp Indentation

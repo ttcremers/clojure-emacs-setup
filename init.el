@@ -35,7 +35,7 @@
 ;; PLUGINS
 
 ;; Line numbers
-;; (global-linum-mode t)
+(global-linum-mode t)
 
 ;; Vim-mode (Evil-mode)
 ;; (require 'evil)

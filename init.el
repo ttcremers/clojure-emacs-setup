@@ -111,6 +111,7 @@
 ;; highlight trainling spaces, empty lines and etc
 ;; (setq whitespace-style '(face empty tabs lines-tail trailing))
 ;; (global-whitespace-mode t)
+(define-key global-map (kbd "RET") 'newline-and-indent)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

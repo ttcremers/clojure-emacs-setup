@@ -1,0 +1,8 @@
+owd
+pwd
+cd
+ls
+cd .emacs.d/
+ls
+gitx
+exit

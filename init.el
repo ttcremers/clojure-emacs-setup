@@ -15,6 +15,7 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(scroll-bar-mode nil)
+ '(current-language-environment "UTF-8")
  '(tool-bar-mode nil))
 
 ;; Fix the PATH variable
@@ -44,22 +45,29 @@
 ;; (setq evil-default-cursor t)
 
 ;; Textmate mode
-(require 'textmate)
-(textmate-mode)
+;; (require 'textmate)                     
+;; (textmate-mode)
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xhtml?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.htm?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
 
 ;; Paredit
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+;;(add-hook 'nrepl-mode-hook 'paredit-mode)
+;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+(highlight-parentheses-mode t)
+(add-hook 'clojure-mode-hook 'highlight-parentheses-mode)
 
 ;; Nrepl
-(setenv "PATH" (concat (getenv "HOME") "/bin:" (getenv "PATH")))
-(setq exec-path (cons "~/bin" exec-path))
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(setq nrepl-popup-stacktraces nil)
-(add-to-list 'same-window-buffer-names "*nrepl*")
-(add-hook 'nrepl-mode-hook 'paredit-mode)
+;; (setenv "PATH" (concat (getenv "HOME") "/bin:" (getenv "PATH")))
+;; (setq exec-path (cons "~/bin" exec-path))
+;; (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+;; (setq nrepl-popup-stacktraces nil)
+;; (add-to-list 'same-window-buffer-names "*nrepl*") 
+;; (add-hook 'nrepl-mode-hook 'paredit-mode) 
 
 ;; Super Tab
 (require 'smart-tab)
@@ -81,12 +89,11 @@
      ;; (color-theme-sanityinc-tomorrow-bright)
      ;; (color-theme-sanityinc-tomorrow-blue)
      ;; (color-theme-sanityinc-tomorrow-eighties)
-     ;; (color-theme-solarized-dark)
-     (color-theme-solarized-light)
+     (color-theme-solarized-dark)
+     ;; (color-theme-solarized-light)
      ))
 
-(set-face-attribute 'default nil :height 130 :font "Monaco")
-(set-cursor-color 'white)
+(set-face-attribute 'default nil :height 120 :font "Monaco")
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
@@ -118,4 +125,42 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;start emacs deamon
+(server-force-delete)
 (server-start)
+;; quiet, please! No dinging!
+(setq visible-bell 'top-bottom)
+(setq ring-bell-function `(lambda ()))
+
+;; Helm!
+(helm-mode 1)
+(global-set-key (kbd "M-SPC") 'helm-mini)
+
+;; Cider (previous nrepl) setup 
+(require 'cider)
+(setq nrepl-hide-special-buffers t)
+(setq cider-repl-pop-to-buffer-on-connect nil)
+(setq cider-repl-display-in-current-window t)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+;; Auto completion stuff
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require 'ac-nrepl)
+(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'cider-repl-mode))
+
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions '(auto-complete)))
+
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-repl-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+(define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
+
+                            

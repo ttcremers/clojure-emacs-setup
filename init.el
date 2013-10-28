@@ -163,4 +163,5 @@
 
 (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
 
-                            
+(global-set-key [next] 'previous-buffer)
+(global-set-key [prior] 'previous-buffer)

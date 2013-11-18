@@ -6,3 +6,17 @@ cd .emacs.d/
 ls
 gitx
 exit
+cd ..
+l
+ls
+cd ..
+ls
+cd ..
+ls
+lein test
+git
+git bracnh
+git branch
+gitx
+help
+exit

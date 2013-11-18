@@ -1,4 +1,4 @@
-1(custom-set-variables
+(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -134,8 +134,8 @@
 (setq ring-bell-function `(lambda ()))
 
 ;; Helm!
-(helm-mode 1)
-(global-set-key (kbd "M-SPC") 'helm-mini)
+;;(helm-mode 1)                           
+;;(global-set-key (kbd "M-SPC") 'helm-mini)
 
 ;; Cider (previous nrepl) setup 
 (require 'cider)
@@ -165,3 +165,19 @@
 
 (global-set-key [next] 'previous-buffer)
 (global-set-key [prior] 'previous-buffer)
+
+;; For Java development requires eclipse and eclimd 
+(require 'eclim)
+(global-eclim-mode)
+(require 'eclimd)
+
+(require 'ac-emacs-eclim-source)
+(ac-emacs-eclim-config)
+
+(require 'company)
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
+(global-company-mode t)
+
+(require 'ido)
+(ido-mode t)

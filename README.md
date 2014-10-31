@@ -104,3 +104,5 @@ or send me an email.
 
 * [SublimeText](http://www.youtube.com/watch?v=wBl0rYXQdGg)
 * Vim ???
+
+Thomas Cremers is a freelance ([software developer at http://vicinitysoftware.com](http://vicinitysoftware.com))
